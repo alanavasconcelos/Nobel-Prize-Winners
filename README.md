@@ -16,5 +16,5 @@ npx expo install
 ```
 
 ```
-npx expo run
+npx expo start
 ```
