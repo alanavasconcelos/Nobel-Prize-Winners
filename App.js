@@ -5,11 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
 
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1C1C1C' }}>
-      <Text style = {{ color: 'white'}}>Home!</Text>
+      <Text style = {{ color: '#D4AF37', fontFamily: 'Italiana'}}>Home!</Text>
     </View>
   );
 }
@@ -17,7 +18,7 @@ function HomeScreen() {
 function FavouritesScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1C1C1C'}}>
-      <Text style = {{ color: 'white'}}>Favourites!</Text>
+      <Text style = {{ color: '#D4AF37', fontFamily: 'Italiana'}}>Favourites!</Text>
     </View>
   );
 }
@@ -27,6 +28,14 @@ const Tab = createMaterialBottomTabNavigator();
 export default function App() {
 
   NavigationBar.setBackgroundColorAsync("#455A64");
+
+  const [fontsLoaded] = useFonts({
+    'Italiana': require('./assets/fonts/Italiana.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <NavigationContainer>
@@ -53,7 +62,7 @@ export default function App() {
             }}
         />
       </Tab.Navigator>
-      <StatusBar style="light" />
+      <StatusBar style="light" backgroundColor="#1C1C1C"/>
     </NavigationContainer>
   );
 }
