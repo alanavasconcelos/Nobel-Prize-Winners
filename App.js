@@ -1,8 +1,10 @@
 import * as React from 'react';
+import * as NavigationBar from 'expo-navigation-bar';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { StatusBar } from 'expo-status-bar';
 
 function HomeScreen() {
   return (
@@ -23,6 +25,9 @@ function FavouritesScreen() {
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
+
+  NavigationBar.setBackgroundColorAsync("#455A64");
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -48,6 +53,7 @@ export default function App() {
             }}
         />
       </Tab.Navigator>
+      <StatusBar style="light" />
     </NavigationContainer>
   );
 }
