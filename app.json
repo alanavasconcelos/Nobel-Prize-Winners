@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "NobelPrizeWinners",
+    "name": "Nobel Prize Winners",
     "slug": "NobelPrizeWinners",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/nobelIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/nobelSplash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
