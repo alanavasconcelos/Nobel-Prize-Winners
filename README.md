@@ -1,5 +1,20 @@
-# Engenharia-de-Software
+# Nobel prize winners
 
-Commit teste 08/02 Gustavo Poroca
+App that shows informations about all the nobel prize winners.
 
-Commit test 09/02 Thales de O. Bezerra
+How to run:
+
+1 - Have npm on your machine
+2- Run the following commands:
+
+```
+npm install
+```
+
+```
+npx expo install
+```
+
+```
+npx expo run
+```
