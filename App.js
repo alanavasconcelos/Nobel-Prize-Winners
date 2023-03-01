@@ -7,11 +7,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import {styles, colors} from './styles.js'
+import { ImageBackground, Image, StyleSheet} from "react-native";
 
 function HomeScreen() {
   return (
     <View style={styles.background}>
-      <Text style = {styles.text}>Home!</Text>
     </View>
   );
 }
@@ -40,6 +40,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <View style={styles.container}>
+        <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground}>
+         <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
+        </ImageBackground>
+      </View>
+    
+
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="black"
