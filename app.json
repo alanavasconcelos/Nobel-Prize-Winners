@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.thalesbezerra.NobelPrizeWinners"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6ca83e25-0ed6-4871-84f7-38b9e0ce3c19"
+      }
     }
   }
 }
