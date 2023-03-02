@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Italiana',
         textAlign: 'center',
         fontWeight: "bold",
-        fontSize:30,
+        fontSize: 30,
         overflow : "hidden",
     },
    
@@ -23,30 +23,30 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        flex: 0.28,
+        flex: 10,
         flexDirection: "column",
+        height:'80%',
+       
       },
+     
 
     background: { 
-        flex: 1, 
         justifyContent: 'center', 
         alignItems: 'center', 
         backgroundColor: colors.primaryDark,
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
+        width:'100%',
+        height: '100%', 
     },
 
     imageBackground: {
-        flex: 1,
+        flex: 2,
         resizeMode: "cover",
         justifyContent: "center",
         alignItems: "center",
-        
-       
-        
+        color: colors.primaryDark,
+        paddingTop: 90,
       }
 
   });

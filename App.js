@@ -11,16 +11,26 @@ import { ImageBackground, Image, StyleSheet} from "react-native";
 
 function HomeScreen() {
   return (
-    <View style={styles.background}>
-    </View>
+    <View style={styles.container}>
+       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground}>
+         <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
+         <View style={styles.background}>
+          <Text style={styles.text}>Conteúdo!!</Text>
+         </View>
+        </ImageBackground>
+      </View>
   );
+ 
 }
 
 function FavouritesScreen() {
   return (
-    <View style={styles.background}>
-      <Text style = {styles.text}>Favourites!</Text>
-    </View>
+    <View style={styles.container}>
+       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground}>
+         <Text style={styles.title}>Favourites!</Text>
+         <View style={styles.background}></View>
+        </ImageBackground>
+      </View>
   );
 }
 
@@ -40,12 +50,6 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground}>
-         <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
-        </ImageBackground>
-      </View>
-    
 
       <Tab.Navigator
         initialRouteName="Home"
