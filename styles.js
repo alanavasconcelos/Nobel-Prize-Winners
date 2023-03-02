@@ -11,9 +11,11 @@ const styles = StyleSheet.create({
         color: colors.text, 
         fontFamily: 'Italiana',
         textAlign: 'center',
-        fontWeight: "bold",
-        fontSize: 30,
+        //fontWeight: "bold",
+        fontSize: 32,
         overflow : "hidden",
+        marginTop: 70, 
+        marginBottom: 35,
     },
    
     text: { 
@@ -26,18 +28,18 @@ const styles = StyleSheet.create({
         flex: 10,
         flexDirection: "column",
         height:'80%',
-       
       },
      
-
     background: { 
+        flex: 5,
         justifyContent: 'center', 
         alignItems: 'center', 
         backgroundColor: colors.primaryDark,
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
+        borderTopColor: colors.text,
+        borderWidth: 0.5,
         width:'100%',
-        height: '100%', 
     },
 
     imageBackground: {
@@ -46,8 +48,23 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         color: colors.primaryDark,
-        paddingTop: 90,
-      }
+      },
+
+    box: {
+        flex: 1, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+
+    iconRow: {
+        flex: 1, 
+        flexDirection: 'row', 
+        justifyContent: "space-around", 
+        alignItems: "space-around", 
+        marginBottom: 50, 
+        width: '80%'
+    }
 
   });
 

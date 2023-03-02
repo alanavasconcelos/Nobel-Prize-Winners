@@ -8,14 +8,15 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import {styles, colors} from './styles.js'
 import { ImageBackground, Image, StyleSheet} from "react-native";
+import HomePageContent from './HomePageContent.js';
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
-       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground}>
-         <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
+       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground} resizeMode='repeat'>
+        <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
          <View style={styles.background}>
-          <Text style={styles.text}>Conteúdo!!</Text>
+          <HomePageContent/>
          </View>
         </ImageBackground>
       </View>
@@ -26,8 +27,8 @@ function HomeScreen() {
 function FavouritesScreen() {
   return (
     <View style={styles.container}>
-       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground}>
-         <Text style={styles.title}>Favourites!</Text>
+       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground} resizeMode='repeat'>
+         <Text style={styles.title}>Favourites</Text>
          <View style={styles.background}></View>
         </ImageBackground>
       </View>
@@ -38,7 +39,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
 
-  NavigationBar.setBackgroundColorAsync("#455A64");
+  NavigationBar.setBackgroundColorAsync(colors.tabBar);
 
   const [fontsLoaded] = useFonts({
     'Italiana': require('./assets/fonts/Italiana.ttf'),
