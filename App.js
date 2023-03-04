@@ -1,39 +1,13 @@
 import * as React from 'react';
 import * as NavigationBar from 'expo-navigation-bar';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import {styles, colors} from './styles.js'
-import { ImageBackground, Image, StyleSheet} from "react-native";
-import HomePageContent from './HomePageContent.js';
-
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground} resizeMode='repeat'>
-        <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
-         <View style={styles.background}>
-          <HomePageContent/>
-         </View>
-        </ImageBackground>
-      </View>
-  );
- 
-}
-
-function FavouritesScreen() {
-  return (
-    <View style={styles.container}>
-       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground} resizeMode='repeat'>
-         <Text style={styles.title}>Favourites</Text>
-         <View style={styles.background}></View>
-        </ImageBackground>
-      </View>
-  );
-}
+import { styles, colors } from './styles.js'
+import HomeScreen from './src/screens/Home.js';
+import FavouritesScreen from './src/screens/Favorites.js';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -51,14 +25,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
-
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="black"
         inactiveColor="white"
         labeled={false}
         barStyle={{ backgroundColor: colors.tabBar }}>
-        <Tab.Screen name="Home" component={HomeScreen} 
+        <Tab.Screen name="Home" component={HomeScreen}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -66,16 +39,16 @@ export default function App() {
             ),
           }}
         />
-        <Tab.Screen name="Favourites" component={FavouritesScreen} 
-            options={{
-              tabBarLabel: 'Favourites',
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="star" color={color} size={26} />
-              ),
-            }}
+        <Tab.Screen name="Favourites" component={FavouritesScreen}
+          options={{
+            tabBarLabel: 'Favourites',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="star" color={color} size={26} />
+            ),
+          }}
         />
       </Tab.Navigator>
-      <StatusBar style="light" backgroundColor={colors.primaryDark}/>
+      <StatusBar style="light" backgroundColor={colors.primaryDark} />
     </NavigationContainer>
   );
 }
