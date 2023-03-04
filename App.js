@@ -7,20 +7,31 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import {styles, colors} from './styles.js'
+import { ImageBackground, Image, StyleSheet} from "react-native";
+import HomePageContent from './HomePageContent.js';
 
 function HomeScreen() {
   return (
-    <View style={styles.background}>
-      <Text style = {styles.text}>Home!</Text>
-    </View>
+    <View style={styles.container}>
+       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground} resizeMode='repeat'>
+        <Text style={styles.title}>NOBEL PRIZE WINNERS</Text>
+         <View style={styles.background}>
+          <HomePageContent/>
+         </View>
+        </ImageBackground>
+      </View>
   );
+ 
 }
 
 function FavouritesScreen() {
   return (
-    <View style={styles.background}>
-      <Text style = {styles.text}>Favourites!</Text>
-    </View>
+    <View style={styles.container}>
+       <ImageBackground source={require('./assets/home.png')} style={styles.imageBackground} resizeMode='repeat'>
+         <Text style={styles.title}>Favourites</Text>
+         <View style={styles.background}></View>
+        </ImageBackground>
+      </View>
   );
 }
 
@@ -28,7 +39,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
 
-  NavigationBar.setBackgroundColorAsync("#455A64");
+  NavigationBar.setBackgroundColorAsync(colors.tabBar);
 
   const [fontsLoaded] = useFonts({
     'Italiana': require('./assets/fonts/Italiana.ttf'),
@@ -40,6 +51,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="black"
