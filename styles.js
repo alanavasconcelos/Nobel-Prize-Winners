@@ -3,7 +3,10 @@ import { StyleSheet } from "react-native";
 const colors = {
     primaryDark: '#1C1C1C',
     text: '#D4AF37',
-    tabBar: '#313131'
+    tabBar: '#313131',
+    cardbck: '#3e403e',
+    textCard: '#ffffff'
+    
 }
   
 const styles = StyleSheet.create({
@@ -64,7 +67,48 @@ const styles = StyleSheet.create({
         alignItems: "space-around", 
         marginBottom: 50, 
         width: '80%'
-    }
+    },
+    box2:{
+        flex: 1, 
+        resizeMode:'repeat',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+    cardContainer: {
+        height: 120,
+        width: 298,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+        shadowOffset: {width: 0, height: 0},
+        shadowOpacity: 1,
+        shadowRadius: 8,
+        elevation: 8,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 6,
+        marginBottom: 6,
+        marginLeft: 6,
+        marginRight: 20,
+        backgroundColor:colors.cardbck,
+
+    },
+
+    textCard: { 
+        color: colors.textCard, 
+        textAlign: 'right',  
+        marginLeft: 110,
+        fontSize: 13,
+        marginTop: 57,
+    },
+    iconCard: {
+        flex: 1, 
+        flexDirection: 'row', 
+        alignItems: "space-around", 
+        marginBottom: 105, 
+        width: '80%', 
+    },
 
   });
 
