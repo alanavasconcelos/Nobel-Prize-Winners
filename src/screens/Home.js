@@ -1,5 +1,5 @@
 import Background from "../components/Background";
-import { View, Image } from "react-native";
+import { View, Image, Pressable, Button } from "react-native";
 import { Searchbar } from "react-native-paper";
 import iconMedicine from '../../assets/categoryIcons/iconMedicine.png'
 import iconPhysics from '../../assets/categoryIcons/iconPhysics.png'
@@ -9,7 +9,7 @@ import iconChemistry from '../../assets/categoryIcons/iconChemistry.png'
 import iconEconomics from '../../assets/categoryIcons/iconEconomics.png'
 import { styles, colors } from "../../styles";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
 
     const iconPairs = [[iconMedicine, iconPhysics], [iconPeace, iconLiterature], [iconChemistry, iconEconomics]]
 
@@ -23,8 +23,8 @@ export default function HomeScreen() {
                     {
                         iconPairs.map(iconPair =>
                             <View style={styles.iconRow}>
-                                <Image source={iconPair[0]} style={{ width: 100, height: 100 }} />
-                                <Image source={iconPair[1]} style={{ width: 100, height: 100 }} />
+                                <Icon source = {iconPair[0]} navigation = {navigation}/>
+                                <Icon source = {iconPair[1]} navigation = {navigation}/>
                             </View>
                         )
                     }
@@ -33,4 +33,12 @@ export default function HomeScreen() {
         </Background>
     );
 
+}
+
+function Icon({ source, navigation }) {
+    return (
+        <Pressable onPress={() => navigation.navigate("WinnersByCategory")}>
+            <Image source={source} style={{ width: 100, height: 100 }} />
+        </Pressable>
+    );
 }

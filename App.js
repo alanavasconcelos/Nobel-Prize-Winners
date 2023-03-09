@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { styles, colors } from './styles.js'
-import HomeScreen from './src/screens/Home.js';
+import HomeStack from './src/screens/HomeStack.js';
 import FavouritesScreen from './src/screens/Favorites.js';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -31,7 +31,7 @@ export default function App() {
         inactiveColor="white"
         labeled={false}
         barStyle={{ backgroundColor: colors.tabBar }}>
-        <Tab.Screen name="Home" component={HomeScreen}
+        <Tab.Screen name="Home" component={HomeStack}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (

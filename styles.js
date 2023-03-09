@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         height: 120,
-        width: 298,
+        width: '80%',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
         marginLeft: 6,
         marginRight: 20,
         backgroundColor:colors.cardbck,
-
     },
 
     textCard: { 
