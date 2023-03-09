@@ -7,7 +7,7 @@ import { styles } from "../../styles";
 
 export default function WinnersByCategory({ route }) {
 
-    const { category } = route.params;
+    const { category, imageSource } = route.params;
     const [nobels, setNobels] = useState(null);
 
     useEffect(() => {
@@ -45,7 +45,9 @@ export default function WinnersByCategory({ route }) {
                     nobels ?
                         nobels.map((nobel, idx) =>
                             <CreateCard
-                                text={`${getYear(nobel)} - ${getLaureates(nobel)} - ${getMotivation(nobel)}`} key={idx} />
+                                text={`${getYear(nobel)} - ${getLaureates(nobel)} - ${getMotivation(nobel)}`} key={idx} 
+                                imageSource={imageSource}
+                            />
                         ) : <ActivityIndicator style = {{marginTop: 60}}/>
                 }
             </View>

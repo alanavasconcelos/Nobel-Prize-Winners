@@ -7,7 +7,7 @@ import iconLiterature from '../../assets/categoryIcons/iconLiterature.png'
 import iconPhysics from '../../assets/categoryIcons/iconPhysics.png'
 
 
-const CreateCard = ({text}) => {
+const CreateCard = ({text, imageSource}) => {
 	
 	return(
 		
@@ -19,7 +19,7 @@ const CreateCard = ({text}) => {
 		 <Card.Content>
 			 <Text style={[styles.textCard]}>{text}</Text>
 		          <View style={styles.iconCard}>
-                      <Image source={iconPhysics} style={{ width: 100, height: 100 }} />
+                      <Image source={imageSource} style={{ width: 100, height: 100 }} />
                   </View>  
            </Card.Content>
 		</ImageBackground>

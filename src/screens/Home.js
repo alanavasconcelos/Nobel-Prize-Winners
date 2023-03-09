@@ -37,7 +37,7 @@ export default function HomeScreen({ navigation }) {
 
 function Icon({ category, navigation }) {
     return (
-        <Pressable onPress={() => navigation.navigate("WinnersByCategory", {category: category})}>
+        <Pressable onPress={() => navigation.navigate("WinnersByCategory", {category: category, imageSource: categoryIcons[category]})}>
             <Image source={categoryIcons[category]} style={{ width: 100, height: 100 }} />
         </Pressable>
     );
