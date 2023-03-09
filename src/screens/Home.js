@@ -11,7 +11,7 @@ import { styles, colors } from "../../styles";
 
 export default function HomeScreen({ navigation }) {
 
-    const iconPairs = [[iconMedicine, iconPhysics], [iconPeace, iconLiterature], [iconChemistry, iconEconomics]]
+    const iconPairs = [["Physiology or Medicine", "Physics"], ["Peace", "Literature"], ["Chemistry", "Economic Sciences"]]
 
     return (
         <Background title="NOBEL PRIZE WINNERS">
@@ -23,8 +23,8 @@ export default function HomeScreen({ navigation }) {
                     {
                         iconPairs.map(iconPair =>
                             <View style={styles.iconRow}>
-                                <Icon source = {iconPair[0]} navigation = {navigation}/>
-                                <Icon source = {iconPair[1]} navigation = {navigation}/>
+                                <Icon category = {iconPair[0]} navigation = {navigation}/>
+                                <Icon category = {iconPair[1]} navigation = {navigation}/>
                             </View>
                         )
                     }
@@ -35,10 +35,19 @@ export default function HomeScreen({ navigation }) {
 
 }
 
-function Icon({ source, navigation }) {
+function Icon({ category, navigation }) {
     return (
-        <Pressable onPress={() => navigation.navigate("WinnersByCategory")}>
-            <Image source={source} style={{ width: 100, height: 100 }} />
+        <Pressable onPress={() => navigation.navigate("WinnersByCategory", {category: category})}>
+            <Image source={categoryIcons[category]} style={{ width: 100, height: 100 }} />
         </Pressable>
     );
+}
+
+const categoryIcons = {
+    "Physiology or Medicine": iconMedicine,
+    "Chemistry": iconChemistry,
+    "Literature": iconLiterature,
+    "Physics": iconPhysics,
+    "Peace": iconPeace,
+    "Economic Sciences": iconEconomics,
 }
