@@ -68,16 +68,10 @@ const styles = StyleSheet.create({
         marginBottom: 50, 
         width: '80%'
     },
-    box2:{
-        flex: 1, 
-        resizeMode:'repeat',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-    },
+   
     cardContainer: {
         height: 120,
-        width: '80%',
+        width: '100%',
         alignItems: 'center',
         borderRadius: 15,
         shadowOffset: {width: 0, height: 0},
@@ -93,16 +87,18 @@ const styles = StyleSheet.create({
     textCard: { 
         color: colors.textCard, 
         textAlign: 'right',  
-        marginLeft: 110,
         fontSize: 13,
         marginTop: 57,
+        marginLeft:100,
+        
     },
     iconCard: {
         flex: 1, 
         flexDirection: 'row', 
-        alignItems: "space-around", 
-        marginBottom: 105, 
-        width: '80%', 
+        alignItems: "center", 
+        marginBottom: 100, 
+        //width: '100%',
+        
     },
 
   });
