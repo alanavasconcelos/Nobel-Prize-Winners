@@ -18,12 +18,7 @@ async function filterByCategory(category){
 async function filterByYear(year){
     const response = await fetch(api_premios_url);
     var data = await response.json();
-        for(r in data.nobelPrizes){
-            if(data.nobelPrizes[r].awardYear == year){
-                //data.nobelPrizes[r] contém todos os nobéis desse ano
-                console.log(data.nobelPrizes[r])
-            }
-        }
+    return data.nobelPrizes.filter(nobel => nobel.awardYear == year)
 }
 
 async function filterByCountry(country){
