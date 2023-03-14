@@ -5,7 +5,7 @@ import { Text, ActivityIndicator, View } from "react-native";
 import CreateCard from "../components/Cards";
 import { styles } from "../../styles";
 
-export default function WinnersByCategory({ route }) {
+export default function WinnersByCategory({ route, navigation }) {
 
     const { category, imageSource } = route.params;
     const [nobels, setNobels] = useState(null);
@@ -47,6 +47,7 @@ export default function WinnersByCategory({ route }) {
                             <CreateCard
                                 text={`${getYear(nobel)} - ${getLaureates(nobel)} - ${getMotivation(nobel)}`} key={idx} 
                                 imageSource={imageSource}
+                                onPress={() => navigation.navigate("CardInfo")}
                             />
                         ) : <ActivityIndicator style = {{marginTop: 60}}/>
                 }

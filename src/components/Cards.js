@@ -7,11 +7,11 @@ import iconLiterature from '../../assets/categoryIcons/iconLiterature.png'
 import iconPhysics from '../../assets/categoryIcons/iconPhysics.png'
 
 
-const CreateCard = ({text, imageSource}) => {
+const CreateCard = ({text, imageSource, onPress}) => {
 
 	return(
 
-	 <Card style={styles.cardContainer}>
+	 <Card style={styles.cardContainer} onPress={onPress}>
 		 <ImageBackground 
 		 source={require('../../assets/cardBackground.png')} 
 		 style={{flex: 1, resizeMode:'cover',justifyContent: 'center',marginLeft:0.1}}
