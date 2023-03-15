@@ -5,7 +5,7 @@ const colors = {
     text: '#D4AF37',
     tabBar: '#313131',
     cardbck: '#3e403e',
-    textCard: '#ffffff'
+    textCard: '#ffffff',
     
 }
   
@@ -100,7 +100,32 @@ const styles = StyleSheet.create({
         //width: '100%',
         
     },
+    box2: {
+        backgroundColor: colors.primaryDark,
+        flex: 1, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+    titleWinner:{
+        color:colors.textCard, 
+        fontSize:25,
+        marginEnd:200,
+        marginBottom:20, 
+        marginTop:60,
+    },
+    text2: { 
+        color: colors.textCard, 
+        textAlign: 'left', 
+        alignItems:'center',
+        fontSize:17,
+        width:'100%',
+        letterSpacing:0.8,
+        marginLeft:5,
+    },
 
+    
+    
   });
 
 export {styles, colors}
