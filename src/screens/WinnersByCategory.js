@@ -47,7 +47,8 @@ export default function WinnersByCategory({ route, navigation }) {
                             <CreateCard
                                 text={`${getYear(nobel)} - ${getLaureates(nobel)} - ${getMotivation(nobel)}`} key={idx} 
                                 imageSource={imageSource}
-                                onPress={() => navigation.navigate("CardInfo")}
+                                onPress={() => navigation.navigate("WinnersInfo", 
+                                {year: getYear(nobel), laureates: getLaureates(nobel), motivation: getMotivation(nobel)})}
                             />
                         ) : <ActivityIndicator style = {{marginTop: 60}}/>
                 }
