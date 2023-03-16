@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { filterByCategory } from "../functions/filtro";
 import { Text, ActivityIndicator, View } from "react-native";
 import CreateCard from "../components/Cards";
-import { styles } from "../../styles";
+import { styles, colors } from "../../styles";
 
 export default function WinnersByCategory({ route, navigation }) {
 
@@ -24,7 +24,20 @@ export default function WinnersByCategory({ route, navigation }) {
 
     const getLaureates = (nobel) => {
         try {
-            return nobel.laureates.map(laur => laur.knownName.en).join(", ");
+            return nobel.laureates.map(laur => {
+                const obj = new Object();
+                obj.name = laur.knownName.en;
+                obj.id = laur.id
+                return obj;
+            });
+        } catch (error) {
+            return null
+        }
+    }
+
+    const getLaureatesString = (nobel) => {
+        try {
+            return getLaureates(nobel).map(laur => laur.name).join(", ")
         } catch (error) {
             return null
         }
@@ -45,12 +58,15 @@ export default function WinnersByCategory({ route, navigation }) {
                     nobels ?
                         nobels.map((nobel, idx) =>
                             <CreateCard
-                                text={`${getYear(nobel)} - ${getLaureates(nobel)} - ${getMotivation(nobel)}`} key={idx} 
+                                text={`${getYear(nobel)} - ${getLaureatesString(nobel)} - ${getMotivation(nobel)}`} key={idx}
                                 imageSource={imageSource}
-                                onPress={() => navigation.navigate("WinnersInfo", 
-                                {year: getYear(nobel), laureates: getLaureates(nobel), motivation: getMotivation(nobel)})}
+                                onPress={() => navigation.navigate("PrizeInfo",
+                                    { year: getYear(nobel), laureates: getLaureates(nobel), motivation: getMotivation(nobel), category: category })}
                             />
-                        ) : <ActivityIndicator style = {{marginTop: 60}}/>
+                        ) :
+                        <View style={{ height: "100%", justifyContent: 'center', alignItems: 'center' }}>
+                            <ActivityIndicator size="large" color={colors.text}/>
+                        </View>
                 }
             </View>
         </Background>

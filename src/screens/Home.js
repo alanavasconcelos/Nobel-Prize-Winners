@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation }) {
     const iconPairs = [["Physiology or Medicine", "Physics"], ["Peace", "Literature"], ["Chemistry", "Economic Sciences"]]
 
     return (
-        <Background title="NOBEL PRIZE WINNERS">
+        <Background title="Nobel Prize Winners">
             <View style={styles.box}>
                 <View style={[styles.box, { width: '70%' }]}>
                     <Searchbar style={{ backgroundColor: colors.tabBar }} inputStyle={{ color: 'white' }} iconColor={colors.text} />

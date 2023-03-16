@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Home';
 import WinnersByCategory from './WinnersByCategory';
-import CardInfo from './CardInfo';
-import WinnersInfo from './WinnersInfo';
+import WinnerInfo from './WinnerInfo';
+import PrizeInfo from './PrizeInfo';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,8 +17,8 @@ export default function HomeStack() {
         >
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="WinnersByCategory" component={WinnersByCategory} />
-            <Stack.Screen name="CardInfo" component={CardInfo} />
-            <Stack.Screen name="WinnersInfo" component={WinnersInfo} />
+            <Stack.Screen name="WinnerInfo" component={WinnerInfo} />
+            <Stack.Screen name="PrizeInfo" component={PrizeInfo} />
         </Stack.Navigator>
     );
 }
