@@ -22,10 +22,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/nobelIcon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.thalesbezerra.NobelPrizeWinners"
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content"
     },
     "web": {
       "favicon": "./assets/favicon.png"
