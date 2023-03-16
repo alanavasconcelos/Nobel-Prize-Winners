@@ -21,10 +21,6 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/nobelIcon.png",
-        "backgroundColor": "#FFFFFF"
-      },
       "package": "com.thalesbezerra.NobelPrizeWinners"
     },
     "androidStatusBar": {
