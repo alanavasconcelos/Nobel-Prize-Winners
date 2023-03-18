@@ -21,11 +21,10 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
       "package": "com.thalesbezerra.NobelPrizeWinners"
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content"
     },
     "web": {
       "favicon": "./assets/favicon.png"

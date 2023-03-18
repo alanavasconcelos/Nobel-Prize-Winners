@@ -44,4 +44,6 @@ async function informa(id){//você dá o id do laureado e ela retorna as informa
     return info
 }
 
-console.log(informa(300))
+//console.log(informa(300))
+
+export default informa;
