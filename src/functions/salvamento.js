@@ -36,3 +36,45 @@ async function checaPessoaFavorito(laureado){
     console.log("false")
     return false;
 }
+
+async function salvaPessoas(){
+    objeto = pessoasFavoritas
+    var jsonData = JSON.stringify(objeto);
+    var fs = require('fs');
+    fs.writeFile('./Pessoas.json', jsonData, function(err) {
+    if (err) {
+        console.log(err);
+    }
+    });
+}
+
+async function salvaPremios(){
+    objeto = premiosFavoritos
+    var jsonData = JSON.stringify(objeto);
+    var fs = require('fs');
+    fs.writeFile('./Premios.json', jsonData, function(err) {
+    if (err) {
+        console.log(err);
+    }
+    });
+}
+
+async function readPessoas(){
+    var fs = require('fs');
+    try {
+        const data = fs.readFileSync('Pessoas.json', 'utf8');
+        pessoasFavoritas = data;
+      } catch (err) {
+        console.error(err);
+      }
+}
+
+async function readPremios(){
+    var fs = require('fs');
+    try {
+        const data = fs.readFileSync('Premios.json', 'utf8');
+        premiosFavoritas = data;
+      } catch (err) {
+        console.error(err);
+      }
+}
