@@ -6,6 +6,7 @@ const colors = {
     tabBar: '#313131',
     cardbck: '#3e403e',
     textCard: '#ffffff',
+    iconFav: '#D4AF37',
 
 }
 
@@ -151,6 +152,11 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderColor: colors.text,
     },
+    button:{
+        padding: 10,
+    borderRadius: 5,
+    backgroundColor: '#f2f2f2',
+    }
 });
 
 export { styles, colors }

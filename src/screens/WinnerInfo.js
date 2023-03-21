@@ -2,6 +2,7 @@ import { View, Text, ImageBackground, ScrollView, Image, ActivityIndicator } fro
 import { styles, colors } from "../../styles";
 import { useEffect, useState } from "react";
 import informa from "../functions/infos";
+import { IconButton } from 'react-native-paper';
 
 export default function WinnerInfo({ route, navigation }) {
 
@@ -26,6 +27,12 @@ export default function WinnerInfo({ route, navigation }) {
                     loading ?
                         <ActivityIndicator size="large" color={colors.text} /> :
                         <View style={styles.box}>
+                                  <IconButton
+                                   icon="star-outline"
+                                   color={colors.primaryDark}
+                                   size={40}
+                                   onPress={() => console.log('Pressed')}
+                                 />
                             <View style={[styles.box, { flex: 1, flexDirection: 'row', marginTop: 15, borderBottomWidth: 0.5, borderColor: colors.text }]}>
                                 <Image source={require("../../assets/nobelMedal.jpg")} style={styles.winnerIcon} />
                                 <Text style={[styles.text, { fontSize: 32 }]}>{winnerData.name}</Text>
