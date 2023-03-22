@@ -8,6 +8,7 @@ export default function WinnerInfo({ route, navigation }) {
 
     const [winnerData, setWinnerData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [starFilled, setStarFilled] = useState(false);
 
     useEffect(() => {
         informa(route.params.id).then((res) => {
@@ -27,12 +28,14 @@ export default function WinnerInfo({ route, navigation }) {
                     loading ?
                         <ActivityIndicator size="large" color={colors.text} /> :
                         <View style={styles.box}>
-                                  <IconButton
-                                   icon="star-outline"
-                                   color={colors.primaryDark}
-                                   size={40}
-                                   onPress={() => console.log('Pressed')}
-                                 />
+                            <View style={styles.favWinners}>
+                                <IconButton
+                                    icon={starFilled ? 'star' : 'star-outline'}
+                                    color='#ffffff'
+                                    size={40}
+                                    onPress={() => setStarFilled(!starFilled)}
+                                />
+                            </View>
                             <View style={[styles.box, { flex: 1, flexDirection: 'row', marginTop: 15, borderBottomWidth: 0.5, borderColor: colors.text }]}>
                                 <Image source={require("../../assets/nobelMedal.jpg")} style={styles.winnerIcon} />
                                 <Text style={[styles.text, { fontSize: 32 }]}>{winnerData.name}</Text>

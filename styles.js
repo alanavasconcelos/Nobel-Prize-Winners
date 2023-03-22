@@ -152,10 +152,14 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderColor: colors.text,
     },
-    button:{
-        padding: 10,
-    borderRadius: 5,
-    backgroundColor: '#f2f2f2',
+    fav:{
+        width:'100%',
+        alignItems:'flex-end',
+    },
+    favWinners:{
+        width:'100%',
+        alignItems:'flex-end',
+        marginTop:15,
     }
 });
 
