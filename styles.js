@@ -6,6 +6,7 @@ const colors = {
     tabBar: '#313131',
     cardbck: '#3e403e',
     textCard: '#ffffff',
+    iconFav: '#D4AF37',
 
 }
 
@@ -151,6 +152,15 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderColor: colors.text,
     },
+    fav:{
+        width:'100%',
+        alignItems:'flex-end',
+    },
+    favWinners:{
+        width:'100%',
+        alignItems:'flex-end',
+        marginTop:15,
+    }
 });
 
 export { styles, colors }
