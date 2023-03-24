@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     favWinners:{
         width:'100%',
         alignItems:'flex-end',
-        marginTop:15,
+        marginTop:30,
     }
 });
 
