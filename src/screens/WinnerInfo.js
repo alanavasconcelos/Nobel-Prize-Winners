@@ -3,6 +3,8 @@ import { styles, colors } from "../../styles";
 import { useEffect, useState } from "react";
 import informa from "../functions/infos";
 import { IconButton } from 'react-native-paper';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 export default function WinnerInfo({ route, navigation }) {
 
@@ -29,12 +31,10 @@ export default function WinnerInfo({ route, navigation }) {
                         <ActivityIndicator size="large" color={colors.text} /> :
                         <View style={styles.box}>
                             <View style={styles.favWinners}>
-                                <IconButton
-                                    icon={starFilled ? 'star' : 'star-outline'}
-                                    color='#ffffff'
-                                    size={40}
-                                    onPress={() => setStarFilled(!starFilled)}
-                                />
+                                <Ionicons.Button
+                                    name={starFilled ? 'star' : 'star-outline'}
+                                    style={{ size: 10, backgroundColor: '#1c1c1c' }}
+                                    onPress={favoritar}></Ionicons.Button>
                             </View>
                             <View style={[styles.box, { flex: 1, flexDirection: 'row', marginTop: 15, borderBottomWidth: 0.5, borderColor: colors.text }]}>
                                 <Image source={require("../../assets/nobelMedal.jpg")} style={styles.winnerIcon} />
@@ -54,3 +54,6 @@ export default function WinnerInfo({ route, navigation }) {
         </ImageBackground>
     );
 }
+
+
+//<IconButton icon={starFilled ? 'star' : 'star-outline'} color='#ffffff'size={40}onPress={() => setStarFilled(!starFilled)}/>
