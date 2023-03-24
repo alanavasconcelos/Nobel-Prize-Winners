@@ -1,13 +1,15 @@
 import { View, Text, } from "react-native";
 import { colors, styles } from "../../styles";
 import TextCard from "../components/TextCard";
-import { IconButton } from 'react-native-paper';
+//import { IconButton } from 'react-native-paper';
 import { useState, useEffect } from "react";
 import { toggleToPrizes, readPrizes, isInPrizes } from "../functions/localStorage";
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 export default function WinnersInfo({ route, navigation }) {
 
-    const { nobelObject } = route.params 
+    const { nobelObject } = route.params
     const { year, laureates, motivation, category } = route.params.nobelObject
     const [starFilled, setStarFilled] = useState(false);
 
@@ -23,13 +25,12 @@ export default function WinnersInfo({ route, navigation }) {
     return (
         <View style={[styles.box2, { justifyContent: "space-around" }]}>
             <View style={[styles.box2, { flex: 2, paddingHorizontal: 20 }]} >
-                <View style={styles.favWinners}>
-                        <IconButton
-                            icon={starFilled ? 'star' : 'star-outline'}
-                            color='#ffffff'
-                            size={40}
-                            onPress={favoritar}
-                        />
+                <View style={styles.fav}>
+                    <Ionicons.Button
+                        name={starFilled ? 'star' : 'star-outline'}
+                        style={{ size: 10, backgroundColor: colors.primaryDark }}
+                        onPress={favoritar}></Ionicons.Button>
+
                 </View>
                 <Text style={styles.titleWinner}>{category + " Nobel Prize" + " - " + year}</Text>
                 <Text style={styles.text2}>{motivation}</Text>
@@ -51,3 +52,10 @@ export default function WinnersInfo({ route, navigation }) {
         </View>
     );
 }
+
+
+//<IconButton
+//icon={starFilled ? 'star' : 'star-outline'}
+//size={40}
+//onPress={favoritar}
+///>

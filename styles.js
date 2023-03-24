@@ -155,11 +155,16 @@ const styles = StyleSheet.create({
     fav:{
         width:'100%',
         alignItems:'flex-end',
+        
     },
     favWinners:{
         width:'100%',
         alignItems:'flex-end',
         marginTop:30,
+    },
+    iconePagFav:{
+        width:'100%',
+        alignItems:'center',
     }
 });
 
