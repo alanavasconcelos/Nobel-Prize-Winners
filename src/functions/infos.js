@@ -57,6 +57,18 @@ async function getWikiSummary(name) {
     }
 }
 
+async function getWikiImage(name) {
+  const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${name}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data.originalimage.source);
+    return data.originalimage.source;
+  } catch (error) {
+    console.error(error);
+  }
+}
 //console.log(informa(300))
 
 export default {informa, getWikiSummary};
