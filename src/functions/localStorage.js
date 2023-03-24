@@ -19,24 +19,27 @@ const readObject = async (storage_Key, errorMessage) => {
     }
   }
 
-const appendToList = async (element, storage_Key, errorMessage) => {
+const readPrizes = async () => await readObject("@favorite_Prizes", "Error reading prizes");
+
+//se o element nao está na lista, o adiciona, se está, o remove
+const toggleToPrizes = async (element) => {
     try {
-        let list = await readObject(storage_Key, "Error reading in appendToList")
+        let list = await readObject("@favorite_Prizes", "Error reading in toggleToPrizes")
         if(list.includes(element)){
             list = list.filter(el => el != element)
         }
         if(list == null || !Array.isArray(list)) {
-            await storeObject([element], storage_Key, "Error storing in appendToList")
+            await storeObject([element], "@favorite_Prizes", "Error storing in toggleToPrizes")
         }else{
             if(list.some(el => el.category == element.category && el.year == element.year)){
                 list = list.filter(el => el.category != element.category || el.year != element.year) //Se está na lista, remove da lista
             }else{
                 list.push(element) //Se não está, adiciona
             }
-            await storeObject(list, storage_Key, "Error storing in appendToList")
+            await storeObject(list, "@favorite_Prizes", "Error storing in toggleToPrizes")
         }
     } catch (error) {
-        console.log(errorMessage + error)
+        console.log("Error toggoling to prizes " + error)
     }
 }
 
@@ -49,7 +52,4 @@ const isInPrizes = async (element) => {
     }
 }
 
-const readPrizes = async () => await readObject("@favorite_Prizes", "Error reading prizes");
-const appendToPrizes = async (element) => appendToList(element, "@favorite_Prizes", "Error appending to prizes");  
-
-export { readPrizes, appendToPrizes, isInPrizes }
+export { readPrizes, toggleToPrizes, isInPrizes }
