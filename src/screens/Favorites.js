@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground } from 'react-native';
+import { View } from 'react-native';
 import Background from "../components/Background";
 import CreateCard from "../components/Cards";
 import { readPrizes } from '../functions/localStorage';

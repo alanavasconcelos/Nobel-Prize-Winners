@@ -3,8 +3,7 @@ import { colors, styles } from "../../styles";
 import TextCard from "../components/TextCard";
 import { IconButton } from 'react-native-paper';
 import { useState, useEffect } from "react";
-//import { salvaPremios, favoritaPremio, checaPremioFavorito } from "../functions/salvamento";
-import { appendToPrizes, readPrizes, isInPrizes } from "../functions/localStorage";
+import { toggleToPrizes, readPrizes, isInPrizes } from "../functions/localStorage";
 
 export default function WinnersInfo({ route, navigation }) {
 
@@ -18,7 +17,7 @@ export default function WinnersInfo({ route, navigation }) {
 
     const favoritar = () => {
         setStarFilled(!starFilled)
-        appendToPrizes(nobelObject).then(readPrizes).then((prize) => console.log(JSON.stringify(prize)))
+        toggleToPrizes(nobelObject).then(readPrizes).then((prize) => console.log(JSON.stringify(prize)))
     }
 
     return (
