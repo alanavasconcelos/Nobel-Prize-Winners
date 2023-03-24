@@ -71,4 +71,4 @@ async function getWikiImage(name) {
 }
 //console.log(informa(300))
 
-export default {informa, getWikiSummary};
+export default {informa, getWikiSummary, getWikiImage};
