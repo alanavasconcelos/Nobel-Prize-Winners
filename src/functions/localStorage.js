@@ -25,9 +25,6 @@ const readPrizes = async () => await readObject("@favorite_Prizes", "Error readi
 const toggleToPrizes = async (element) => {
     try {
         let list = await readObject("@favorite_Prizes", "Error reading in toggleToPrizes")
-        if(list.includes(element)){
-            list = list.filter(el => el != element)
-        }
         if(list == null || !Array.isArray(list)) {
             await storeObject([element], "@favorite_Prizes", "Error storing in toggleToPrizes")
         }else{
