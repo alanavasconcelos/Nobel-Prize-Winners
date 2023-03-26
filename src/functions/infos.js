@@ -2,29 +2,29 @@ const api_pessoas_url = "https://masterdataapi.nobelprize.org/2.1/laureates?offs
 const api_premios_url = "https://masterdataapi.nobelprize.org/2.1/nobelPrizes?offset=0&limit=1000";
 
 info = {
-    name: "null",
-    gender: "null",
-    birthDate: "null",
-    birthString: "null",
-    birthCountry: "null",
-    wikipedia: "null",
-    nobel:[{name: "null", link: "null"}, {name: "null", link: "null"}]
+    name: null,
+    gender: null,
+    birthDate: null,
+    birthString: null,
+    birthCountry: null,
+    wikipedia: null,
+    wikidataId: null,
+    wikipediaName: null,
+    nobel:[{name: null, link: null}, {name: null, link: null}]
     };
 
 //função pra checar a api função exemplo
 async function getapi(url){
     const response = await fetch(url);
-
     var data = await response.json();
-    
-        console.log(data.laureates.filter(laureates => laureates.id == 745));
+    console.log(data.laureates.filter(laureates => laureates.id == 745));
 }
 
 async function informa(id){//você dá o id do laureado e ela retorna as informações
     const response = await fetch(api_pessoas_url);
     var data = await response.json();
-    laureado = data.laureates.filter(laureado => laureado.id == id)
-    winner = laureado[0]
+    let laureado = data.laureates.filter(laureado => laureado.id == id)
+    let winner = laureado[0]
     try {
     info.name = winner.knownName.en 
     info.gender = winner.gender
@@ -32,6 +32,8 @@ async function informa(id){//você dá o id do laureado e ela retorna as informa
     info.birthString = winner.birth.place.city.en + ", "+ winner.birth.place.country.en
     info.birthCountry = winner.birth.place.country.en
     info.wikipedia = winner.wikipedia.english
+    info.wikidataId = winner.wikidata.id
+    info.wikipediaName = winner.wikipedia.slug
     info.nobel[0].name = winner.nobelPrizes[0].category.en + " of " + winner.nobelPrizes[0].awardYear
     info.nobel[0].link = winner.nobelPrizes[0].links[0].href
         info.nobel[1].name = winner.nobelPrizes[1].category.en + " of " + winner.nobelPrizes[1].awardYear
@@ -47,20 +49,19 @@ async function informa(id){//você dá o id do laureado e ela retorna as informa
 async function getNameById(id){
   const response = await fetch(api_pessoas_url);
     var data = await response.json();
-    laureado = data.laureates.filter(laureado => laureado.id == id)
-    winner = laureado[0]
+    let laureado = data.laureates.filter(laureado => laureado.id == id)
+    let winner = laureado[0]
     return winner.knownName.en
 }
 
-async function getWikiSummary(id) {
-    var name = getNameById(id);
+async function getWikiSummary(name) {
     const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${name}`;
-  
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data.extract);
-      return data.extract;
+      console.log("Data wikipedia: " + data.extract);
+      console.log("Image wikipedia: " + data.originalimage.source);
+      return { summary: data.extract, picture: data.originalimage.source};
     } catch (error) {
       console.error(error);
     }
@@ -81,4 +82,4 @@ async function getWikiImage(name) {
 }
 //console.log(informa(300))
 
-export default {informa, getWikiSummary, getWikiImage};
+export { informa, getWikiSummary, getWikiImage }
