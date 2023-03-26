@@ -8,18 +8,43 @@ import { useFonts } from 'expo-font';
 import { styles, colors } from './styles.js'
 import HomeStack from './src/screens/HomeStack.js';
 import FavouritesScreen from './src/screens/Favorites.js';
+import { useState, useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-
-  NavigationBar.setBackgroundColorAsync(colors.tabBar);
-
-  const [fontsLoaded] = useFonts({
+  const [isReady, setIsReady] = useState(false);
+  const [loaded] = useFonts({
     'Julius Sans One': require('./assets/fonts/JuliusSansOne.ttf'),
   });
 
-  if (!fontsLoaded) {
+  NavigationBar.setBackgroundColorAsync(colors.tabBar);
+
+  useEffect(() => {
+    async function loadResourcesAndDataAsync() {
+      try {
+        // Load fonts and other required resources here
+        await SplashScreen.preventAutoHideAsync();
+        if (!loaded) {
+          await Font.loadAsync({
+            'Julius Sans One': require('./assets/fonts/JuliusSansOne.ttf'),
+          });
+        }
+        // Wait for at least 2 seconds
+        setTimeout(() => {
+          setIsReady(true);
+          SplashScreen.hideAsync();
+        }, 2000);
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+    loadResourcesAndDataAsync();
+  }, []);
+
+  if (!isReady) {
     return null;
   }
 
