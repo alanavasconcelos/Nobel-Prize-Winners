@@ -16,7 +16,7 @@ export default function App() {
   NavigationBar.setBackgroundColorAsync(colors.tabBar);
 
   const [fontsLoaded] = useFonts({
-    'Italiana': require('./assets/fonts/Italiana.ttf'),
+    'Julius Sans One': require('./assets/fonts/JuliusSansOne.ttf'),
   });
 
   if (!fontsLoaded) {

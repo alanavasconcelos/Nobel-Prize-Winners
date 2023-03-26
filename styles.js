@@ -13,7 +13,7 @@ const colors = {
 const styles = StyleSheet.create({
     title: {
         color: colors.text,
-        fontFamily: 'Italiana',
+        fontFamily: 'Julius Sans One',
         textAlign: 'center',
         //fontWeight: "bold",
         fontSize: 32,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
     text: {
         color: colors.text,
-        fontFamily: 'Italiana',
+        fontFamily: 'Julius Sans One',
         textAlign: 'center',
     },
 
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         marginEnd: 200,
         marginBottom: 20,
         marginTop: 60,
-        fontFamily: "Italiana",
+        fontFamily: 'Julius Sans One',
         color: colors.text
     },
     text2: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         width: '100%',
         letterSpacing: 0.8,
         marginLeft: 5,
-        fontFamily: "Italiana",
+        fontFamily: 'Julius Sans One',
         color: colors.text
     },
 
