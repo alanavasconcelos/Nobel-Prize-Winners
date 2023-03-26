@@ -1,33 +1,33 @@
 import React from "react";
-import { Text ,View, StyleSheet, ImageBackground , Image} from 'react-native';
-import {Card, Button , Title ,Paragraph } from 'react-native-paper';
+import { Text, View, ImageBackground, Image } from 'react-native';
+import { Card } from 'react-native-paper';
 import { colors, styles } from '../../styles';
-import iconMedicine from '../../assets/categoryIcons/iconMedicine.png'
-import iconLiterature from '../../assets/categoryIcons/iconLiterature.png'
-import iconPhysics from '../../assets/categoryIcons/iconPhysics.png'
 
+const CreateCard = ({ nobelObject, onPress }) => {
 
-const CreateCard = ({text, imageSource, onPress}) => {
+	const { year, laureatesString, motivation, image } = nobelObject;
 
-	return(
+	return (
 
-	 <Card style={styles.cardContainer} onPress={onPress}>
-		 <ImageBackground 
-		 source={require('../../assets/home.png')} 
-		 style={{flex: 1, resizeMode:'repeat',justifyContent: 'center'}}
-		 imageStyle={{borderRadius:15}}>
-		 <Card.Content>
-			 <Text numberOfLines={3} style={{color:colors.textCard,fontSize: 13,marginTop: 57,marginLeft:100,width:150 }}>{text}</Text>
-		          <View style={styles.iconCard}>
-                      <Image source={imageSource} style={{ width: 90, height: 90,marginEnd:10 }} />
-                  </View>  
-           </Card.Content>
-		</ImageBackground>
-	 </Card>
-		
+		<Card style={styles.cardContainer} onPress={onPress}>
+			<ImageBackground
+				source={require('../../assets/home.png')}
+				style={{ flex: 1, resizeMode: 'repeat', justifyContent: 'center' }}
+				imageStyle={{ borderRadius: 15 }}>
+				<Card.Content>
+					<Text numberOfLines={3} style={{ color: colors.textCard, fontSize: 13, marginTop: 57, marginLeft: 100, width: 150 }}>
+						{`${year} - ${laureatesString} - ${motivation}`}
+					</Text>
+					<View style={styles.iconCard}>
+						<Image source={image} style={{ width: 90, height: 90, marginEnd: 10 }} />
+					</View>
+				</Card.Content>
+			</ImageBackground>
+		</Card>
+
 	)
 }
 export default CreateCard;
-		
+
 
 

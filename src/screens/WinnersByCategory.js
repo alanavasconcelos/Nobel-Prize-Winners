@@ -14,6 +14,17 @@ export default function WinnersByCategory({ route, navigation }) {
         filterByCategory(category).then((res) => setNobels(res.slice(0, 10)));
     })
 
+    const getNobelObject = (nobel) => {
+        return {
+            year: getYear(nobel),
+            laureates: getLaureates(nobel),
+            laureatesString: getLaureatesString(nobel),
+            motivation: getMotivation(nobel),
+            category: category,
+            image: imageSource,
+        }
+    }
+
     const getYear = (nobel) => {
         try {
             return nobel.awardYear;
@@ -58,10 +69,8 @@ export default function WinnersByCategory({ route, navigation }) {
                     nobels ?
                         nobels.map((nobel, idx) =>
                             <CreateCard
-                                text={`${getYear(nobel)} - ${getLaureatesString(nobel)} - ${getMotivation(nobel)}`} key={idx}
-                                imageSource={imageSource}
-                                onPress={() => navigation.navigate("PrizeInfo",
-                                    { year: getYear(nobel), laureates: getLaureates(nobel), motivation: getMotivation(nobel), category: category })}
+                                nobelObject={getNobelObject(nobel)} key = {idx}
+                                onPress={() => navigation.navigate("PrizeInfo", {nobelObject: getNobelObject(nobel)})}
                             />
                         ) :
                         <View style={{ height: "100%", justifyContent: 'center', alignItems: 'center' }}>

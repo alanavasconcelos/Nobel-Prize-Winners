@@ -44,6 +44,41 @@ async function informa(id){//você dá o id do laureado e ela retorna as informa
     return info
 }
 
+async function getNameById(id){
+  const response = await fetch(api_pessoas_url);
+    var data = await response.json();
+    laureado = data.laureates.filter(laureado => laureado.id == id)
+    winner = laureado[0]
+    return winner.knownName.en
+}
+
+async function getWikiSummary(id) {
+    var name = getNameById(id);
+    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${name}`;
+  
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data.extract);
+      return data.extract;
+    } catch (error) {
+      console.error(error);
+    }
+}
+
+async function getWikiImage(name) {
+  var name = getNameById(id);
+  const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${name}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data.originalimage.source);
+    return data.originalimage.source;
+  } catch (error) {
+    console.error(error);
+  }
+}
 //console.log(informa(300))
 
-export default informa;
+export default {informa, getWikiSummary, getWikiImage};
