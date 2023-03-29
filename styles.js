@@ -145,26 +145,36 @@ const styles = StyleSheet.create({
     },
 
     winnerIcon: {
-        width: 60, 
-        height: 60, 
+        width: 60,
+        height: 60,
         marginRight: 20,
         borderRadius: 50,
         borderWidth: 0,
         borderColor: colors.text,
     },
-    fav:{
-        width:'100%',
-        alignItems:'flex-end',
-        
+    fav: {
+        width: '100%',
+        alignItems: 'flex-end',
+
     },
-    favWinners:{
-        width:'100%',
-        alignItems:'flex-end',
-        marginTop:30,
+    favWinners: {
+        width: '100%',
+        alignItems: 'flex-end',
+        marginTop: 30,
     },
-    iconePagFav:{
-        width:'100%',
-        alignItems:'center',
+    iconePagFav: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection:'row',
+      },
+    circle: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 2,
+        borderColor: colors.primaryDark,
     }
 });
 
