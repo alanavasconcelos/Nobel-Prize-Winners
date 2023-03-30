@@ -1,28 +1,38 @@
 import { TouchableOpacity, View } from 'react-native';
 import Background from "../components/Background";
 import CreateCard from "../components/Cards";
-import { readPrizes } from '../functions/localStorage';
+import { readPrizes, readLaureates } from '../functions/localStorage';
 import { useEffect, useState } from 'react';
 import { colors, styles } from "../../styles";
 import Icon from 'react-native-vector-icons/Ionicons';
+import TextCard from '../components/TextCard';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function FavouritesScreen() {
 
+    const isFocused = useIsFocused();
+
     const [favorites, setFavorites] = useState(null);
-    const [isPressed, setIsPressed] = useState(false);
+    const [isPressed, setIsPressed] = useState(true);
     const [isPressed2, setIsPressed2] = useState(false);
+    const [favoriteLaureates, setFavoriteLaureates] = useState(null)
+
 
     useEffect(() => {
         readPrizes().then((prize) => setFavorites(prize));
-    })
+    }, [isFocused])
+
+    useEffect(() => {
+        readLaureates().then((laureates) => setFavoriteLaureates(laureates));
+    }, [isFocused])
 
     const handlePress = () => {
-        setIsPressed(!isPressed);
+        setIsPressed(true);
         setIsPressed2(false);
     };
     const handlePress2 = () => {
         setIsPressed(false);
-        setIsPressed2(!isPressed2);
+        setIsPressed2(true);
         
     };
 
@@ -40,10 +50,14 @@ export default function FavouritesScreen() {
                     </View>
                 </TouchableOpacity>
             </View>
-            <View style={{ flex: 1, paddingBottom: 30 }}>
+            <View style={{ flex: 1, paddingBottom: 30, width: "65%", alignItems: 'center' }}>
                 {
-                    favorites &&
+                    (favorites && isPressed2) &&
                     favorites.map((favorite, idx) => <CreateCard nobelObject={favorite} key={idx} onPress />)
+                }
+                {
+                    (favoriteLaureates && isPressed) &&
+                    favoriteLaureates.map((favorite, idx) => <TextCard text={favorite.name} key = {idx} style ={{marginTop: 30}}/>)
                 }
             </View>
         </Background>

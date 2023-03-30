@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { informa, getWikiSummary } from "../functions/infos";
 import { IconButton } from 'react-native-paper';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { readLaureates, toggleToLaureates, isInLaureates } from "../functions/localStorage";
 
 export default function WinnerInfo({ route, navigation }) {
 
@@ -27,6 +28,15 @@ export default function WinnerInfo({ route, navigation }) {
             .then(() => setLoading(false))
     }, [])
 
+    useEffect(() => {
+        isInLaureates(route.params.id).then(res => setStarFilled(res))
+    }, [])
+
+    const favoritar = () => {
+        setStarFilled(!starFilled)
+        toggleToLaureates(winnerData).then(readLaureates).then((prize) => console.log(JSON.stringify(prize)))
+    }
+
     return (
         <ImageBackground
             source={require('../../assets/medalBackground.png')}
@@ -41,8 +51,8 @@ export default function WinnerInfo({ route, navigation }) {
                             <View style={styles.favWinners}>
                                 <Ionicons.Button
                                     name={starFilled ? 'star' : 'star-outline'}
-                                    style={{ size: 10, backgroundColor: '#1c1c1c' }}
-                                    onPress={() => setStarFilled(!starFilled)}></Ionicons.Button>
+                                    style={{ size: 10, backgroundColor: '#1c1c1c', marginTop: 20 }}
+                                    onPress={favoritar }></Ionicons.Button>
                             </View>
                             <View style={[styles.box, { flex: 1, flexDirection: 'row', marginTop: 15, borderBottomWidth: 0.5, borderColor: colors.text }]}>
                                 {

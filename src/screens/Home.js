@@ -1,5 +1,5 @@
 import Background from "../components/Background";
-import { View, Image, Pressable, Button } from "react-native";
+import { View, Image, Pressable, Text } from "react-native";
 import { Searchbar } from "react-native-paper";
 import iconMedicine from '../../assets/categoryIcons/iconMedicine.png'
 import iconPhysics from '../../assets/categoryIcons/iconPhysics.png'
@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
 
     return (
         <Background title="Nobel Prize Winners">
-            <View style={styles.box}>
+            <View style={[styles.box, {paddingTop: 25}]}>
                 <View style={[styles.box, { width: '70%' }]}>
                     <Searchbar style={{ backgroundColor: colors.tabBar }} inputStyle={{ color: 'white' }} iconColor={colors.text} />
                 </View>
@@ -37,8 +37,13 @@ export default function HomeScreen({ navigation }) {
 
 function Icon({ category, navigation }) {
     return (
-        <Pressable onPress={() => navigation.navigate("WinnersByCategory", {category: category, imageSource: categoryIcons[category]})}>
+        <Pressable
+            style = {{alignItens: 'center'}} 
+            onPress={() => navigation.navigate("WinnersByCategory", {category: category, imageSource: categoryIcons[category]})}>
             <Image source={categoryIcons[category]} style={{ width: 100, height: 100 }} />
+            <Text style = {[styles.text, {marginTop: 5, fontSize: 12}]} >
+                {category == "Physiology or Medicine"? "Medicine": (category == "Economic Sciences"? "Economics": category)}
+            </Text>
         </Pressable>
     );
 }

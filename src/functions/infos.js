@@ -1,7 +1,10 @@
+import laureates from "./data/laureates"
+
 const api_pessoas_url = "https://masterdataapi.nobelprize.org/2.1/laureates?offset=0&limit=2000";
 const api_premios_url = "https://masterdataapi.nobelprize.org/2.1/nobelPrizes?offset=0&limit=1000";
 
 info = {
+    id: null,
     name: null,
     gender: null,
     birthDate: null,
@@ -21,11 +24,13 @@ async function getapi(url){
 }
 
 async function informa(id){//você dá o id do laureado e ela retorna as informações
-    const response = await fetch(api_pessoas_url);
-    var data = await response.json();
+    //const response = await fetch(api_pessoas_url);
+    //var data = await response.json();
+    let data = laureates
     let laureado = data.laureates.filter(laureado => laureado.id == id)
     let winner = laureado[0]
     try {
+    info.id = winner.id
     info.name = winner.knownName.en 
     info.gender = winner.gender
     info.birthDate = winner.birth.date
