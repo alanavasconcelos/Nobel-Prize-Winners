@@ -49,4 +49,34 @@ const isInPrizes = async (element) => {
     }
 }
 
-export { readPrizes, toggleToPrizes, isInPrizes }
+const readLaureates = async () => await readObject("@favorite_Laureates", "Error reading laureates");
+
+//se o element nao está na lista, o adiciona, se está, o remove
+const toggleToLaureates = async (element) => {
+    try {
+        let list = await readObject("@favorite_Laureates", "Error reading in toggleLaureates")
+        if(list == null || !Array.isArray(list)) {
+            await storeObject([element], "@favorite_Laureates", "Error storing in toggleLaureates")
+        }else{
+            if(list.some(el => el.id == element.id)){
+                list = list.filter(el => el.id !== element.id) //Se está na lista, remove da lista
+            }else{
+                list.push(element) //Se não está, adiciona
+            }
+            await storeObject(list, "@favorite_Laureates", "Error storing in toggleLaureates")
+        }
+    } catch (error) {
+        console.log("Error toggoling to Laureates " + error)
+    }
+}
+
+const isInLaureates = async (id) => {
+    try {
+        let list = await readPrizes()
+        return list.some(el => el.id == id)
+    } catch (error) {
+        console.log("Erro checking if its in prizes " + error)
+    }
+}
+
+export { readPrizes, toggleToPrizes, isInPrizes, readLaureates, toggleToLaureates, isInLaureates }

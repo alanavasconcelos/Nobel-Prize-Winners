@@ -12,7 +12,7 @@ export default function WinnersByCategory({ route, navigation }) {
 
     useEffect(() => {
         filterByCategory(category).then((res) => setNobels(res.slice(0, 10)));
-    })
+    }, [])
 
     const getNobelObject = (nobel) => {
         return {

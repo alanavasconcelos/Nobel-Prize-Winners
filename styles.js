@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     iconePagFav: {
+        marginTop: 20,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection:'row',
