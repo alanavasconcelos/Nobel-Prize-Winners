@@ -1,5 +1,8 @@
 const api_pessoas_url = "https://masterdataapi.nobelprize.org/2.1/laureates?offset=0&limit=1000";// atualmente tem 981
 const api_premios_url = "https://masterdataapi.nobelprize.org/2.1/nobelPrizes?offset=0&limit=700";// atualmente tem 664
+import { AsyncStorage } from 'react-native';
+import laureates from "./data/laureates"
+import prizes from "./data/prizes"
 pessoasFavoritas = []
 premiosFavoritos = []
 
@@ -10,71 +13,23 @@ async function getapi(url){
         console.log(data.laureates.filter(laureates => laureates.id == 745));
 }
 
-async function favoritaPessoa(laureado){
-    pessoasFavoritas.push(laureado)
-}
-
-async function favoritaPremio(premio){
-    premiosFavoritos.push(premio)
-}
-
-async function checaPremioFavorito(premio){
-    favorito = premiosFavoritos.find(nobel => nobel == premio)
-    if(favorito==premio){
-        console.log("true")
-        return true;
+async function saveApis(){//rodar uma vez no inicio do app
+    localPrizes = prizes;
+    const response = await fetch(api_premios_url);
+    var onlinePrizes = await response.json();
+    if(onlinePrizes.length != localPrizes.length){
+        const response = await fetch(api_pessoas_url);
+        var data = await response.json();
+        saveObjectToJsonFile(data, "./data/laureates");
+        saveObjectToJsonFile(onlinePrizes, "./data/prizes");
     }
-    console.log("false")
-    return false;
-}
-async function checaPessoaFavorito(laureado){
-    favorito = pessoasFavoritas.find(pessoa => pessoa == laureado)
-    if(favorito==laureado){
-        console.log("true")
-        return true;
-    }
-    console.log("false")
-    return false;
 }
 
-async function salvaPessoas(){
-    objeto = pessoasFavoritas
-    var jsonData = JSON.stringify(objeto);
-    var fs = require('fs');
-    fs.writeFile('./Pessoas.json', jsonData, function(err) {
-    if (err) {
-        console.log(err);
-    }
-    });
-}
-
-async function salvaPremios(){
-    objeto = premiosFavoritos
-    var jsonData = JSON.stringify(objeto);
-    var fs = require('fs');
-    fs.writeFile('./Premios.json', jsonData, function(err) {
-    if (err) {
-        console.log(err);
-    }
-    });
-}
-
-async function readPessoas(){
-    var fs = require('fs');
+async function saveObjectToJsonFile(object, fileName) {
     try {
-        const data = fs.readFileSync('Pessoas.json', 'utf8');
-        pessoasFavoritas = data;
-      } catch (err) {
-        console.error(err);
-      }
-}
-
-async function readPremios(){
-    var fs = require('fs');
-    try {
-        const data = fs.readFileSync('Premios.json', 'utf8');
-        premiosFavoritas = data;
-      } catch (err) {
-        console.error(err);
-      }
-}
+      await AsyncStorage.setItem(fileName, JSON.stringify(object));
+      console.log('Object saved to file!');
+    } catch (error) {
+      console.error('Error saving object to file:', error);
+    }
+  }
