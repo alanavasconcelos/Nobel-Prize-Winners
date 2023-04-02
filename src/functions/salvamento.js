@@ -20,14 +20,16 @@ async function saveApis(){//rodar uma vez no inicio do app
     if(onlinePrizes.length != localPrizes.length){
         const response = await fetch(api_pessoas_url);
         var data = await response.json();
-        saveObjectToJsonFile(data, "./data/laureates");
-        saveObjectToJsonFile(onlinePrizes, "./data/prizes");
+        saveObjectToJsFile(data, "./data/laureates");
+        saveObjectToJsFile(onlinePrizes, "./data/prizes");
     }
 }
 
-async function saveObjectToJsonFile(object, fileName) {
+async function saveObjectToJsFile(object, fileName) {
     try {
-      await AsyncStorage.setItem(fileName, JSON.stringify(object));
+      const jsonString = JSON.stringify(object);
+      const jsString = `export default ${jsonString};`;
+      await AsyncStorage.setItem(fileName, jsString);
       console.log('Object saved to file!');
     } catch (error) {
       console.error('Error saving object to file:', error);
