@@ -1,7 +1,7 @@
 const api_pessoas_url = "https://masterdataapi.nobelprize.org/2.1/laureates?offset=0&limit=2000";
 const api_premios_url = "https://masterdataapi.nobelprize.org/2.1/nobelPrizes?offset=0&limit=1000";
-
 import prizes from './data/prizes'
+import { retrieveData } from './salvamento';
 
 //função pra checar a api função exemplo
 async function getapi(url){
@@ -14,7 +14,9 @@ async function getapi(url){
 async function filterByCategory(category){
     //const response = await fetch(api_premios_url);
     //var data = await response.json();    
-    return prizes.nobelPrizes.filter(nobel => nobel.category.en == category)
+    let data = await retrieveData('prizes');
+    data = data == null? prizes.nobelPrizes: data; 
+    return data.filter(nobel => nobel.category.en == category)
 }
 
 async function filterByYear(year){

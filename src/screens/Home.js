@@ -8,10 +8,16 @@ import iconLiterature from '../../assets/categoryIcons/iconLiterature.png'
 import iconChemistry from '../../assets/categoryIcons/iconChemistry.png'
 import iconEconomics from '../../assets/categoryIcons/iconEconomics.png'
 import { styles, colors } from "../../styles";
+import { saveApis }  from "../functions/salvamento";
+import { useEffect } from "react";
 
 export default function HomeScreen({ navigation }) {
 
     const iconPairs = [["Physiology or Medicine", "Physics"], ["Peace", "Literature"], ["Chemistry", "Economic Sciences"]]
+
+    useEffect(() => {
+        saveApis().then(() => console.log("Api used"));
+    }, []);
 
     return (
         <Background title="Nobel Prize Winners">

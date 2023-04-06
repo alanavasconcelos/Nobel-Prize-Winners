@@ -1,53 +1,6 @@
 const prizes = {
     nobelPrizes: [
-      {
-        awardYear: "1901",
-        category: {
-          en: "Chemistry",
-          no: "Kjemi",
-          se: "Kemi"
-        },
-        categoryFullName: {
-          en: "The Nobel Prize in Chemistry",
-          no: "Nobelprisen i kjemi",
-          se: "Nobelpriset i kemi"
-        },
-        prizeAmount: 150782,
-        prizeAmountAdjusted: 8722510,
-        links: [
-          {
-            rel: "nobelPrize",
-            href: "https://api.nobelprize.org/2/nobelPrize/che/1901",
-            action: "GET",
-            types: "application/json"
-          }
-        ],
-        laureates: [
-          {
-            id: "160",
-            knownName: {
-              en: "Jacobus H. van 't Hoff"
-            },
-            fullName: {
-              en: "Jacobus Henricus van 't Hoff"
-            },
-            portion: "1",
-            sortOrder: "1",
-            motivation: {
-              en: "in recognition of the extraordinary services he has rendered by the discovery of the laws of chemical dynamics and osmotic pressure in solutions",
-              se: "såsom ett erkännande av den utomordentliga förtjänst han inlagt genom upptäckten av lagarna för den kemiska dynamiken och för det osmotiska trycket i lösningar"
-            },
-            links: [
-              {
-                rel: "laureate",
-                href: "https://api.nobelprize.org/2/laureate/160",
-                action: "GET",
-                types: "application/json"
-              }
-            ]
-          }
-        ]
-      },
+      
       {
         awardYear: "1901",
         category: {
