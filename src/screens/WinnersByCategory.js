@@ -11,7 +11,7 @@ export default function WinnersByCategory({ route, navigation }) {
     const [nobels, setNobels] = useState(null);
 
     useEffect(() => {
-        filterByCategory(category).then((res) => setNobels(res.slice(0, 10)));
+        filterByCategory(category).then((res) => setNobels(res));
     }, [])
 
     const getNobelObject = (nobel) => {
