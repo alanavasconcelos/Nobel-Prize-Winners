@@ -1,6 +1,7 @@
 const api_pessoas_url = "https://masterdataapi.nobelprize.org/2.1/laureates?offset=0&limit=2000";
 const api_premios_url = "https://masterdataapi.nobelprize.org/2.1/nobelPrizes?offset=0&limit=1000";
 import prizes from './data/prizes'
+import laureates from "./data/laureates"
 import { retrieveData } from './salvamento';
 
 //função pra checar a api função exemplo
@@ -64,5 +65,42 @@ async function filterMulti(country, year, category){
         }
     }
 }
+//funcoes curiosidades
+
+async function countCategories() {//conta quais categorias tem e quantas de cada, tem que chamar countCategories
+    const categoriesCount = {};
+  
+    prizes.forEach(object => {
+      const category = object.category.en;
+  
+      if (category in categoriesCount) {
+        // If category already exists in the dictionary, increment the count
+        categoriesCount[category] += 1;
+      } else {
+        // If category doesn't exist in the dictionary, add it with count 1
+        categoriesCount[category] = 1;
+      }
+    });
+  
+    return categoriesCount;
+  }
+
+  async function countCountries() {//conta quais categorias tem e quantas de cada, tem que chamar countCategories
+    const countriesCount = {};
+  
+    laureates.forEach(object => {
+      const country = object.birth.place.country.en;
+  
+      if (country in countriesCount) {
+        // If category already exists in the dictionary, increment the count
+        countriesCount[country] += 1;
+      } else {
+        // If category doesn't exist in the dictionary, add it with count 1
+        countriesCount[country] = 1;
+      }
+    });
+  
+    return countriesCount;
+  }
 
 export {filterByCategory, filterByYear, filterByCountry, filterMulti}
