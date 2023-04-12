@@ -85,7 +85,7 @@ async function countCategories() {//conta quais categorias tem e quantas de cada
     return categoriesCount;
   }
 
-  async function countCountries() {//conta quais categorias tem e quantas de cada, tem que chamar countCategories
+  async function countCountries() {
     const countriesCount = {};
   
     laureates.forEach(object => {
@@ -99,8 +99,28 @@ async function countCategories() {//conta quais categorias tem e quantas de cada
         countriesCount[country] = 1;
       }
     });
+      const countriesArray = Object.entries(countriesCount);
+      countriesArray.sort((a, b) => b[1] - a[1]);
+      const sortedCountriesCount = Object.fromEntries(countriesArray);
+   return sortedCountriesCount;
+  }
+
+  async function countGender() {
+    const gendersCount = {};
   
-    return countriesCount;
+    laureates.forEach(object => {
+      const gender = object.gender;
+  
+      if (gender in gendersCount) {
+        // If category already exists in the dictionary, increment the count
+        gendersCount[gender] += 1;
+      } else {
+        // If category doesn't exist in the dictionary, add it with count 1
+        gendersCount[gender] = 1;
+      }
+    });
+  
+    return gendersCount;
   }
 
 export {filterByCategory, filterByYear, filterByCountry, filterMulti}
