@@ -8,6 +8,7 @@ import { useFonts } from 'expo-font';
 import { styles, colors } from './styles.js'
 import HomeStack from './src/screens/HomeStack.js';
 import FavouritesScreen from './src/screens/Favorites.js';
+import Statistics from './src/screens/Statistics.js';
 import { useState, useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
@@ -69,6 +70,14 @@ export default function App() {
             tabBarLabel: 'Favourites',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="star" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen name="Statistics" component={Statistics}
+          options={{
+            tabBarLabel: 'Statistics',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="graph" color={color} size={26} />
             ),
           }}
         />
