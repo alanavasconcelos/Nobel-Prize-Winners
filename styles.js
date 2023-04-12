@@ -7,6 +7,7 @@ const colors = {
     cardbck: '#3e403e',
     textCard: '#ffffff',
     iconFav: '#D4AF37',
+    textSub: '#B48F17'
 
 }
 
@@ -87,6 +88,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 30,
         backgroundColor: colors.cardbck,
+        borderWidth:0.5,
+        borderColor:colors.text
     },
 
     textCard: {
