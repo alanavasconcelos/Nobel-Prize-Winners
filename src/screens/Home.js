@@ -10,13 +10,15 @@ import iconEconomics from '../../assets/categoryIcons/iconEconomics.png'
 import { styles, colors } from "../../styles";
 import { saveApis }  from "../functions/salvamento";
 import { useEffect } from "react";
+import { searchPrizes } from "../functions/search";
 
 export default function HomeScreen({ navigation }) {
 
     const iconPairs = [["Physiology or Medicine", "Physics"], ["Peace", "Literature"], ["Chemistry", "Economic Sciences"]]
 
     useEffect(() => {
-        saveApis().then(() => console.log("Api used"));
+        //saveApis().then(() => console.log("Api used"));
+        console.log("PESQUISA: " + searchPrizes('Medicine').map(x => x.awardYear + " " + x.category.en));
     }, []);
 
     return (
