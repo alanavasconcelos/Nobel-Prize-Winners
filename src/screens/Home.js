@@ -9,12 +9,16 @@ import iconChemistry from '../../assets/categoryIcons/iconChemistry.png'
 import iconEconomics from '../../assets/categoryIcons/iconEconomics.png'
 import { styles, colors } from "../../styles";
 import { saveApis }  from "../functions/salvamento";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { searchPrizes } from "../functions/search";
 
 export default function HomeScreen({ navigation }) {
 
     const iconPairs = [["Physiology or Medicine", "Physics"], ["Peace", "Literature"], ["Chemistry", "Economic Sciences"]]
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const onChangeSearch = query => setSearchQuery(query);
+    const searchAction = () => navigation.navigate("Search", {initialQuery: searchQuery})
 
     useEffect(() => {
         saveApis().then(() => console.log("Api used"));
@@ -25,7 +29,14 @@ export default function HomeScreen({ navigation }) {
         <Background title="Nobel Prize Winners">
             <View style={[styles.box, {paddingTop: 25}]}>
                 <View style={[styles.box, { width: '70%' }]}>
-                    <Searchbar style={{ backgroundColor: colors.tabBar }} inputStyle={{ color: 'white' }} iconColor={colors.text} />
+                    <Searchbar style={{ backgroundColor: colors.tabBar }} 
+                        inputStyle={styles.text} 
+                        iconColor={colors.text} 
+                        onIconPress={searchAction}
+                        onSubmitEditing={searchAction}
+                        onChangeText={onChangeSearch}
+                        value={searchQuery}
+                        />
                 </View>
                 <View style={[styles.box, { flex: 4 }]}>
                     {

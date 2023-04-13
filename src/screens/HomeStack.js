@@ -3,6 +3,7 @@ import HomeScreen from './Home';
 import WinnersByCategory from './WinnersByCategory';
 import WinnerInfo from './WinnerInfo';
 import PrizeInfo from './PrizeInfo';
+import SearchScreen from './Search';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ export default function HomeStack() {
             <Stack.Screen name="WinnersByCategory" component={WinnersByCategory} />
             <Stack.Screen name="WinnerInfo" component={WinnerInfo} />
             <Stack.Screen name="PrizeInfo" component={PrizeInfo} />
+            <Stack.Screen name="Search" component={SearchScreen} />
         </Stack.Navigator>
     );
 }
