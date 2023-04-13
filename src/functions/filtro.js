@@ -109,10 +109,10 @@ function countCountries() {//conta quais categorias tem e quantas de cada, tem q
    return sortedCountriesCount;
   }
 
-  async function countGender() {
+  function countGender() {
     const gendersCount = {};
   
-    laureates.forEach(object => {
+    laureates.laureates.forEach(object => {
       const gender = object.gender;
   
       if (gender in gendersCount) {
@@ -127,4 +127,4 @@ function countCountries() {//conta quais categorias tem e quantas de cada, tem q
     return gendersCount;
   }
 
-export { filterByCategory, filterByYear, filterByCountry, filterMulti, countCountries, countCategories }
+export { filterByCategory, filterByYear, filterByCountry, filterMulti, countCountries, countCategories, countGender }
