@@ -4,63 +4,16 @@ import { filterByCategory } from "../functions/filtro";
 import { Text, ActivityIndicator, View } from "react-native";
 import CreateCard from "../components/Cards";
 import { styles, colors } from "../../styles";
+import parsePrize from "../functions/parsePrize";
 
 export default function WinnersByCategory({ route, navigation }) {
 
-    const { category, imageSource } = route.params;
+    const { category } = route.params;
     const [nobels, setNobels] = useState(null);
 
     useEffect(() => {
         filterByCategory(category).then((res) => setNobels(res));
     }, [])
-
-    const getNobelObject = (nobel) => {
-        return {
-            year: getYear(nobel),
-            laureates: getLaureates(nobel),
-            laureatesString: getLaureatesString(nobel),
-            motivation: getMotivation(nobel),
-            category: category,
-            image: imageSource,
-        }
-    }
-
-    const getYear = (nobel) => {
-        try {
-            return nobel.awardYear;
-        } catch (error) {
-            return null;
-        }
-    }
-
-    const getLaureates = (nobel) => {
-        try {
-            return nobel.laureates.map(laur => {
-                const obj = new Object();
-                obj.name = laur.knownName.en;
-                obj.id = laur.id
-                return obj;
-            });
-        } catch (error) {
-            return null
-        }
-    }
-
-    const getLaureatesString = (nobel) => {
-        try {
-            return getLaureates(nobel).map(laur => laur.name).join(", ")
-        } catch (error) {
-            return null
-        }
-    }
-
-    const getMotivation = (nobel) => {
-        try {
-            return nobel.laureates[0].motivation.en;
-        } catch (error) {
-            return null
-        }
-    }
 
     return (
         <Background title={category}>
@@ -69,8 +22,8 @@ export default function WinnersByCategory({ route, navigation }) {
                     nobels ?
                         nobels.map((nobel, idx) =>
                             <CreateCard
-                                nobelObject={getNobelObject(nobel)} key = {idx}
-                                onPress={() => navigation.navigate("PrizeInfo", {nobelObject: getNobelObject(nobel)})}
+                                nobelObject={parsePrize(nobel)} key = {idx}
+                                onPress={() => navigation.navigate("PrizeInfo", {nobelObject: parsePrize(nobel)})}
                             />
                         ) :
                         <View style={{ height: "100%", justifyContent: 'center', alignItems: 'center' }}>

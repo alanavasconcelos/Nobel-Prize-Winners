@@ -17,8 +17,8 @@ export default function HomeScreen({ navigation }) {
     const iconPairs = [["Physiology or Medicine", "Physics"], ["Peace", "Literature"], ["Chemistry", "Economic Sciences"]]
 
     useEffect(() => {
-        //saveApis().then(() => console.log("Api used"));
-        console.log("PESQUISA: " + searchPrizes('Medicine').map(x => x.awardYear + " " + x.category.en));
+        saveApis().then(() => console.log("Api used"));
+        //console.log("PESQUISA: " + searchPrizes('Medicine').map(x => x.awardYear + " " + x.category.en));
     }, []);
 
     return (
