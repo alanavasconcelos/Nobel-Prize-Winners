@@ -38,6 +38,7 @@ export default function FavouritesScreen({navigation}) {
 
     return (
         <Background title="Favorites">
+            <View style={{ flex: 1, paddingBottom: 30, alignItems: 'center', width: '100%' }}>
             <View style={styles.iconePagFav}>
             <TouchableOpacity onPress={handlePress} style={styles.iconePagFav}>
                     <View style={[styles.circle, { backgroundColor: isPressed ? colors.text : 'transparent' },]}>
@@ -50,7 +51,7 @@ export default function FavouritesScreen({navigation}) {
                     </View>
                 </TouchableOpacity>
             </View>
-            <View style={{ flex: 1, paddingBottom: 30, width: "65%", alignItems: 'center' }}>
+            <View style={{ flex: 1, paddingBottom: 30, alignItems: 'center' }}>
                 {
                     (favorites && isPressed2) &&
                     favorites.map((favorite, idx) => <CreateCard nobelObject={favorite} key={idx} onPress = {() => navigation.navigate("PrizeInfo", {nobelObject: favorite})} />)
@@ -59,6 +60,7 @@ export default function FavouritesScreen({navigation}) {
                     (favoriteLaureates && isPressed) &&
                     favoriteLaureates.map((favorite, idx) => <TextCard text={favorite.name} key = {idx} style ={{marginTop: 30}} onPress = {() => navigation.navigate("WinnerInfo", {id: favorite.id})}/>)
                 }
+            </View>
             </View>
         </Background>
     );

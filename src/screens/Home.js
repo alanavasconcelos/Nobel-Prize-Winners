@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
     return (
         <Background title="Nobel Prize Winners">
             <View style={[styles.box, {paddingTop: 25}]}>
-                <View style={[styles.box, { width: '70%' }]}>
+                <View style={[styles.box, { width: '80%' }]}>
                     <Searchbar style={{ backgroundColor: colors.tabBar }} 
                         inputStyle={styles.text} 
                         iconColor={colors.text} 
