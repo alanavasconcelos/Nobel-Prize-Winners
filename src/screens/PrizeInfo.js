@@ -23,7 +23,7 @@ export default function WinnersInfo({ route, navigation }) {
     }
 
     return (
-        <View style={[styles.box2, { justifyContent: "space-around" }]}>
+        <View style={[styles.box2, { justifyContent: "space-around", paddingTop: 80 }]}>
             <View style={[styles.box2, { flex: 2, paddingHorizontal: 20 }]} >
                 <View style={styles.fav}>
                     <Ionicons.Button

@@ -47,11 +47,11 @@ export default function WinnerInfo({ route, navigation }) {
                 {
                     loading ?
                         <ActivityIndicator size="large" color={colors.text} /> :
-                        <View style={styles.box}>
+                        <View style={[styles.box, {paddingTop: 40}]}>
                             <View style={styles.favWinners}>
                                 <Ionicons.Button
                                     name={starFilled ? 'star' : 'star-outline'}
-                                    style={{ size: 10, backgroundColor: '#1c1c1c', marginTop: 20 }}
+                                    style={{ size: 10, backgroundColor: 'black'}}
                                     onPress={favoritar }></Ionicons.Button>
                             </View>
                             <View style={[styles.box, { flex: 1, flexDirection: 'row', marginTop: 15, borderBottomWidth: 0.5, borderColor: colors.text }]}>

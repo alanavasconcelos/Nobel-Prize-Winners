@@ -40,9 +40,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.primaryDark,
+        borderStyle: 'solid',
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
-        borderTopColor: colors.text,
+        borderColor: colors.text,
         borderWidth: 0.5,
         width: '100%',
     },
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 30,
         backgroundColor: colors.cardbck,
-        borderWidth:0.5,
+        borderWidth:1,
         borderColor:colors.text
     },
 

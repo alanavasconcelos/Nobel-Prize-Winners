@@ -15,7 +15,7 @@ const CreateCard = ({ nobelObject, onPress }) => {
 				style={{ flex: 1, resizeMode: 'repeat', justifyContent: 'center' }}
 				imageStyle={{ borderRadius: 15 }}>
 				<Card.Content>
-					<Text numberOfLines={3} style={{ color: colors.textCard, fontSize: 13, marginTop: 57, marginLeft: 100, width: 150 }}>
+					<Text numberOfLines={3} style={{ color: colors.textCard, fontSize: 13,marginTop: 57, marginLeft: 100, width: 150 }}>
 						{`${year} - ${laureatesString} - ${motivation}`}
 					</Text>
 					<View style={styles.iconCard}>

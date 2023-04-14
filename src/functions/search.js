@@ -19,6 +19,4 @@ const stringifyPrize = ({ awardYear, category, laureates }) => {
     return `${awardYear} ${category.en}`
 }
 
-    
-
 export { searchPrizes }
