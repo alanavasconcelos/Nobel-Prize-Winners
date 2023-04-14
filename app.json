@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/nobelSplash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +24,8 @@
       "package": "com.thalesbezerra.NobelPrizeWinners"
     },
     "androidStatusBar": {
-      "barStyle": "light-content"
+      "barStyle": "dark-content",
+      "backgroundColor": "#000000"
     },
     "web": {
       "favicon": "./assets/favicon.png"
