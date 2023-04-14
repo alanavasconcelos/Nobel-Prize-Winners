@@ -13,6 +13,7 @@ export default function WinnerInfo({ route, navigation }) {
     const [winnerPicture, setWinnerPicture] = useState(null)
     const [loading, setLoading] = useState(true);
     const [starFilled, setStarFilled] = useState(false);
+    const [params, setParams] = useState(route.params);
 
     useEffect(() => {
         informa(route.params.id)
@@ -26,7 +27,7 @@ export default function WinnerInfo({ route, navigation }) {
                 //setWinnerPicture(res.picture)
             })
             .then(() => setLoading(false))
-    }, [])
+    }, [route.params])
 
     useEffect(() => {
         isInLaureates(route.params.id).then(res => setStarFilled(res))
@@ -65,7 +66,7 @@ export default function WinnerInfo({ route, navigation }) {
                                 <Text style={[styles.text, { fontSize: 20 }]}>{winnerData.birthString}</Text>
                                 <Text style={[styles.text, { fontSize: 20 }]}>{winnerData.birthDate}</Text>
                             </View>
-                            <View style={[styles.box, { flex: 3 }]}>
+                            <View style={[styles.box, { flex: 3, marginTop: 30 }]}>
                                 <Text style={[styles.text, { fontSize: 20, textAlign: 'left' }]}>{winnerSummary}</Text>
                             </View>
                         </View>

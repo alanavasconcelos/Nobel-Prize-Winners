@@ -24,8 +24,8 @@ export default function Statistics() {
                 <Text style={{ fontSize: 20, color: colors.textSub, fontFamily: 'Julius Sans One', alignItems: "center" }}>Top 5</Text>
                 {countries.map((country, idx) =>
                     <View style={{ marginTop: 20 }} key = {idx}>
-                        <Text style={{ fontSize: 20, color: colors.text, fontFamily: 'Julius Sans One' }}>{country[0]}</Text>
-                        <Text style={{ fontSize: 15, color: colors.textSub, fontFamily: 'Julius Sans One' }}>{`won ${country[1]} nobel prizes`}</Text>
+                        <Text style={{ fontSize: 20, color: colors.text, fontFamily: 'Julius Sans One', textAlign: 'left' }}>{country[0]}</Text>
+                        <Text style={{ fontSize: 15, color: colors.textSub, fontFamily: 'Julius Sans One', textAlign: 'left' }}>{`won ${country[1]} nobel prizes`}</Text>
                     </View>
                 )}
             </View>

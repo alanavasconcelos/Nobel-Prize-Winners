@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import TextCard from '../components/TextCard';
 import { useIsFocused } from '@react-navigation/native';
 
-export default function FavouritesScreen() {
+export default function FavouritesScreen({navigation}) {
 
     const isFocused = useIsFocused();
 
@@ -53,11 +53,11 @@ export default function FavouritesScreen() {
             <View style={{ flex: 1, paddingBottom: 30, width: "65%", alignItems: 'center' }}>
                 {
                     (favorites && isPressed2) &&
-                    favorites.map((favorite, idx) => <CreateCard nobelObject={favorite} key={idx} onPress />)
+                    favorites.map((favorite, idx) => <CreateCard nobelObject={favorite} key={idx} onPress = {() => navigation.navigate("PrizeInfo", {nobelObject: favorite})} />)
                 }
                 {
                     (favoriteLaureates && isPressed) &&
-                    favoriteLaureates.map((favorite, idx) => <TextCard text={favorite.name} key = {idx} style ={{marginTop: 30}}/>)
+                    favoriteLaureates.map((favorite, idx) => <TextCard text={favorite.name} key = {idx} style ={{marginTop: 30}} onPress = {() => navigation.navigate("WinnerInfo", {id: favorite.id})}/>)
                 }
             </View>
         </Background>

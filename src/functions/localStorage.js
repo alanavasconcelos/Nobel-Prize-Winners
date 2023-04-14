@@ -72,7 +72,7 @@ const toggleToLaureates = async (element) => {
 
 const isInLaureates = async (id) => {
     try {
-        let list = await readPrizes()
+        let list = await readLaureates()
         return list.some(el => el.id == id)
     } catch (error) {
         console.log("Erro checking if its in prizes " + error)

@@ -7,7 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { styles, colors } from './styles.js'
 import HomeStack from './src/screens/HomeStack.js';
-import FavouritesScreen from './src/screens/Favorites.js';
+import FavoritesStack from './src/screens/FavoritesStack.js';
 import Statistics from './src/screens/Statistics.js';
 import { useState, useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
@@ -65,7 +65,7 @@ export default function App() {
             ),
           }}
         />
-        <Tab.Screen name="Favourites" component={FavouritesScreen}
+        <Tab.Screen name="Favourites" component={FavoritesStack}
           options={{
             tabBarLabel: 'Favourites',
             tabBarIcon: ({ color }) => (
