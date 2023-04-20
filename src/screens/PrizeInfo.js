@@ -1,4 +1,4 @@
-import { View, Text, } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { colors, styles } from "../../styles";
 import TextCard from "../components/TextCard";
 //import { IconButton } from 'react-native-paper';
@@ -23,35 +23,37 @@ export default function WinnersInfo({ route, navigation }) {
     }
 
     return (
-        <View style={[styles.box2, { justifyContent: "space-around", paddingTop: 80 }]}>
-            <View style={[styles.box2, { flex: 2, paddingHorizontal: 20 }]} >
-                <View style={styles.fav}>
-                    <Ionicons.Button
-                        name={starFilled ? 'star' : 'star-outline'}
-                        style={{ size: 10, backgroundColor: colors.primaryDark }}
-                        onPress={favoritar}></Ionicons.Button>
+        <ScrollView style={{ flex: 1, width: '100%' }} contentContainerStyle={{ flexGrow: 1 }}>
+            <View style={[styles.box2, { justifyContent: "space-around", paddingTop: 80 }]}>
+                <View style={[styles.box2, { flex: 2, paddingHorizontal: 20 }]} >
+                    <View style={styles.fav}>
+                        <Ionicons.Button
+                            name={starFilled ? 'star' : 'star-outline'}
+                            style={{ size: 10, backgroundColor: colors.primaryDark }}
+                            onPress={favoritar}></Ionicons.Button>
 
+                    </View>
+                    <Text style={styles.titleWinner}>{category + " Nobel Prize" + " - " + year}</Text>
+                    <Text style={styles.text2}>{motivation}</Text>
                 </View>
-                <Text style={styles.titleWinner}>{category + " Nobel Prize" + " - " + year}</Text>
-                <Text style={styles.text2}>{motivation}</Text>
+                {
+                    laureates &&
+                    <View style={[styles.box2, { flex: 1, rowGap: 20, paddingBottom: 50 }]}>
+                        <Text style={[styles.text, { fontSize: 25 }]}>Laureates</Text>
+                        {
+                            laureates.map(laureate =>
+                                (laureate.isPerson == true || laureate.isPerson == undefined) ?
+                                    <TextCard
+                                        text={laureate.name}
+                                        onPress={() => navigation.navigate("WinnerInfo", { id: laureate.id })}
+                                    /> :
+                                    <Text style={[styles.text, { fontSize: 16 }]}>{laureate.name}</Text>
+                            )
+                        }
+                    </View>
+                }
             </View>
-            {
-                laureates &&
-                <View style={[styles.box2, { flex: 1, rowGap: 20, paddingBottom: 50 }]}>
-                    <Text style={[styles.text, { fontSize: 25 }]}>Laureates</Text>
-                    {
-                        laureates.map(laureate =>
-                            (laureate.isPerson == true || laureate.isPerson == undefined) ?
-                                <TextCard
-                                    text={laureate.name}
-                                    onPress={() => navigation.navigate("WinnerInfo", { id: laureate.id })}
-                                /> :
-                                <Text style={[styles.text, { fontSize: 16 }]}>{laureate.name}</Text>
-                        )
-                    }
-                </View>
-            }
-        </View>
+        </ScrollView>
     );
 }
 
