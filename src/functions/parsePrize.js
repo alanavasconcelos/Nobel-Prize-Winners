@@ -38,8 +38,9 @@ const getLaureates = (nobel) => {
     try {
         return nobel.laureates.map(laur => {
             const obj = new Object();
-            obj.name = laur.knownName.en;
+            obj.name = laur.knownName? laur.knownName.en: laur.orgName.en;
             obj.id = laur.id
+            obj.isPerson = laur.knownName? true: false;
             return obj;
         });
     } catch (error) {
@@ -57,6 +58,7 @@ const getLaureatesString = (nobel) => {
 
 const getMotivation = (nobel) => {
     try {
+        if(nobel.topMotivation) return nobel.topMotivation.en
         return nobel.laureates[0].motivation.en;
     } catch (error) {
         return null

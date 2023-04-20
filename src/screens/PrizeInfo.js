@@ -41,10 +41,12 @@ export default function WinnersInfo({ route, navigation }) {
                     <Text style={[styles.text, { fontSize: 25 }]}>Laureates</Text>
                     {
                         laureates.map(laureate =>
-                            <TextCard
-                                text={laureate.name}
-                                onPress={() => navigation.navigate("WinnerInfo", { id: laureate.id })}
-                            />
+                            (laureate.isPerson == true || laureate.isPerson == undefined) ?
+                                <TextCard
+                                    text={laureate.name}
+                                    onPress={() => navigation.navigate("WinnerInfo", { id: laureate.id })}
+                                /> :
+                                <Text style={[styles.text, { fontSize: 16 }]}>{laureate.name}</Text>
                         )
                     }
                 </View>

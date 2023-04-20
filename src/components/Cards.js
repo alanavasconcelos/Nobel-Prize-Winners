@@ -16,7 +16,7 @@ const CreateCard = ({ nobelObject, onPress }) => {
 				imageStyle={{ borderRadius: 15 }}>
 				<Card.Content>
 					<Text numberOfLines={3} style={{ color: colors.textCard, fontSize: 13,marginTop: 57, marginLeft: 100, width: 150 }}>
-						{`${year} - ${laureatesString} - ${motivation}`}
+						{`${year} ${laureatesString != null? `- ${laureatesString}`: ""} - ${motivation}`}
 					</Text>
 					<View style={styles.iconCard}>
 						<Image source={image} style={{ width: 90, height: 90, marginEnd: 10 }} />
