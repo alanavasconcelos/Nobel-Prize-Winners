@@ -51,7 +51,7 @@ export default function FavouritesScreen({navigation}) {
                     </View>
                 </TouchableOpacity>
             </View>
-            <View style={{ flex: 1, paddingBottom: 30, alignItems: 'center' }}>
+            <View style={[{ flex: 1, paddingBottom: 30, alignItems: 'center'}, isPressed? {width: '100%'}:{marginTop: 10}]}>
                 {
                     (favorites && isPressed2) &&
                     favorites.map((favorite, idx) => <CreateCard nobelObject={favorite} key={idx} onPress = {() => navigation.navigate("PrizeInfo", {nobelObject: favorite})} />)
