@@ -1,40 +1,51 @@
 import * as React from 'react';
 import * as NavigationBar from 'expo-navigation-bar';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import {styles, colors} from './styles.js'
-
-function HomeScreen() {
-  return (
-    <View style={styles.background}>
-      <Text style = {styles.text}>Home!</Text>
-    </View>
-  );
-}
-
-function FavouritesScreen() {
-  return (
-    <View style={styles.background}>
-      <Text style = {styles.text}>Favourites!</Text>
-    </View>
-  );
-}
+import { styles, colors } from './styles.js'
+import HomeStack from './src/screens/HomeStack.js';
+import FavoritesStack from './src/screens/FavoritesStack.js';
+import Statistics from './src/screens/Statistics.js';
+import { useState, useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-
-  NavigationBar.setBackgroundColorAsync("#455A64");
-
-  const [fontsLoaded] = useFonts({
-    'Italiana': require('./assets/fonts/Italiana.ttf'),
+  const [isReady, setIsReady] = useState(false);
+  const [loaded] = useFonts({
+    'Julius Sans One': require('./assets/fonts/JuliusSansOne.ttf'),
   });
 
-  if (!fontsLoaded) {
+  NavigationBar.setBackgroundColorAsync(colors.tabBar);
+
+  useEffect(() => {
+    async function loadResourcesAndDataAsync() {
+      try {
+        // Load fonts and other required resources here
+        await SplashScreen.preventAutoHideAsync();
+        if (!loaded) {
+          await Font.loadAsync({
+            'Julius Sans One': require('./assets/fonts/JuliusSansOne.ttf'),
+          });
+        }
+        // Wait for at least 2 seconds
+        setTimeout(() => {
+          setIsReady(true);
+          SplashScreen.hideAsync();
+        }, 2000);
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+    loadResourcesAndDataAsync();
+  }, []);
+
+  if (!isReady) {
     return null;
   }
 
@@ -46,7 +57,7 @@ export default function App() {
         inactiveColor="white"
         labeled={false}
         barStyle={{ backgroundColor: colors.tabBar }}>
-        <Tab.Screen name="Home" component={HomeScreen} 
+        <Tab.Screen name="Home" component={HomeStack}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -54,16 +65,24 @@ export default function App() {
             ),
           }}
         />
-        <Tab.Screen name="Favourites" component={FavouritesScreen} 
-            options={{
-              tabBarLabel: 'Favourites',
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="star" color={color} size={26} />
-              ),
-            }}
+        <Tab.Screen name="Favourites" component={FavoritesStack}
+          options={{
+            tabBarLabel: 'Favourites',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="star" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen name="Statistics" component={Statistics}
+          options={{
+            tabBarLabel: 'Statistics',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="graph" color={color} size={26} />
+            ),
+          }}
         />
       </Tab.Navigator>
-      <StatusBar style="light" backgroundColor={colors.primaryDark}/>
+      <StatusBar style="light" backgroundColor={colors.primaryDark} />
     </NavigationContainer>
   );
 }
